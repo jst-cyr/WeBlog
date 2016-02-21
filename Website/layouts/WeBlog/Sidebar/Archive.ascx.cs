@@ -43,10 +43,13 @@ namespace Sitecore.Modules.WeBlog.Layouts
             set;
         }
 
-        protected virtual void Page_Load(object sender, EventArgs e)
+        public BlogArchive()
         {
             ExpandMonthsOnLoad = true;
+        }
 
+        protected virtual void Page_Load(object sender, EventArgs e)
+        {
             m_entriesByMonthAndYear = new Dictionary<int, List<EntryItem>>();
 
             if (CurrentBlog != null)

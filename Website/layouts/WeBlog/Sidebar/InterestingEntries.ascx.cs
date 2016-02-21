@@ -10,14 +10,14 @@ namespace Sitecore.Modules.WeBlog.Layouts
         private string m_title = string.Empty;
 
         /// <summary>
-        /// Gets or sets the title to display. If empty, reads the title from the dictionary
+        /// Gets or sets the title to display. If empty, reads the default title from the dictionary
         /// </summary>
         public string Title
         {
             get
             {
                 if (!string.IsNullOrEmpty(m_title))
-                    return m_title;
+                    return Sitecore.Modules.WeBlog.Globalization.Translator.Render(m_title);
                 else
                     return Sitecore.Modules.WeBlog.Globalization.Translator.Render("POPULAR_POSTS");
             }

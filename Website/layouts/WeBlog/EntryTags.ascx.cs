@@ -31,7 +31,7 @@ namespace Sitecore.Modules.WeBlog.Layouts
 
                 if (list != null)
                 {
-                    list.DataSource = from tag in tags select tag.Key;
+                    list.DataSource = from tag in tags select tag.Name;
                     list.DataBind();
                 }
             }

@@ -364,6 +364,7 @@
     <Compile Include="Managers\ManagerFactory.cs" />
     <Compile Include="Managers\TagManager.cs" />
     <Compile Include="Model\Comment.cs" />
+    <Compile Include="Model\Tag.cs" />
     <Compile Include="Pipelines\CaptchaProcessor.cs" Condition="$(Configuration.Contains('sc6.2')) or $(Configuration.Contains('sc6.4')) or $(Configuration.Contains('sc6.6')) or $(Configuration.Contains('sc7.0'))" />
     <Compile Include="Pipelines\CaptchaProcessor-7.5.cs" Condition="$(Configuration.Contains('sc7.5'))" />
     <Compile Include="Pipelines\CaptchaProcessor-8.0.cs" Condition="$(Configuration.Contains('sc8.0'))" />

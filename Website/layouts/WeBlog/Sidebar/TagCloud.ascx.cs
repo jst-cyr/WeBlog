@@ -11,10 +11,44 @@ namespace Sitecore.Modules.WeBlog.Layouts
     {
         private int m_min = int.MaxValue;
         private int m_max = int.MinValue;
+        private string[] m_SortingNames = null;
+
+        private string[] SortNames
+        {
+            get
+            {
+                if (m_SortingNames != null)
+                {
+                    return m_SortingNames;
+                }
+                if (string.IsNullOrEmpty(SortingOptions))
+                {
+                    return new string[0];
+                }
+                var database = Sitecore.Context.Database;
+                m_SortingNames = SortingOptions.Split('|')
+                    .Select(id => database.GetItem(id))
+                    .Where(item => item != null)
+                    .Select(item => item.Name.ToLowerInvariant())
+                    .ToArray();
+                return m_SortingNames;
+            }
+        }
+
+        public string SortingOptions
+        {
+            get;
+            set;
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
              LoadTags();
+            if (TagSortList != null)
+            {
+                TagSortList.DataSource = SortNames;
+                TagSortList.DataBind();
+            }
         }
 
         /// <summary>
@@ -22,17 +56,16 @@ namespace Sitecore.Modules.WeBlog.Layouts
         /// </summary>
         protected virtual void LoadTags()
         {
-            if (ManagerFactory.TagManagerInstance.GetAllTags().Count == 0)
+            var tags = ManagerFactory.TagManagerInstance.GetAllTags();
+            if (tags.Length == 0)
             {
                 if(PanelTagCloud != null)
                     PanelTagCloud.Visible = false;
             }
             else
             {
-                var tags = ManagerFactory.TagManagerInstance.GetAllTags();
-
-                m_min = (from tag in tags select tag.Value).Min();
-                m_max = (from tag in tags select tag.Value).Max();
+                m_min = (from tag in tags select tag.Count).Min();
+                m_max = (from tag in tags select tag.Count).Max();
 
                 if (TagList != null)
                 {

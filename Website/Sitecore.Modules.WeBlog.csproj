@@ -212,6 +212,13 @@
     <Compile Include="layouts\WeBlog\CommentsList.ascx.designer.cs">
       <DependentUpon>CommentsList.ascx</DependentUpon>
     </Compile>
+    <Compile Include="layouts\WeBlog\DisqusComments.ascx.cs">
+      <DependentUpon>DisqusComments.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="layouts\WeBlog\DisqusComments.ascx.designer.cs">
+      <DependentUpon>DisqusComments.ascx</DependentUpon>
+    </Compile>
     <Compile Include="layouts\WeBlog\Entry.ascx.cs">
       <DependentUpon>Entry.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -414,6 +421,7 @@
     <Content Include="layouts\WeBlog\Blog.ascx" />
     <Content Include="layouts\WeBlog\Captcha.ascx" />
     <Content Include="layouts\WeBlog\CommentsList.ascx" />
+    <Content Include="layouts\WeBlog\DisqusComments.ascx" />
     <Content Include="layouts\WeBlog\Entry.ascx" />
     <Content Include="layouts\WeBlog\EntryCategories.ascx" />
     <Content Include="layouts\WeBlog\EntryTags.ascx" />
